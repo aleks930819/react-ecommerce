@@ -38,6 +38,7 @@ const cartSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
       state.cartItems = removeItem;
+      console.log(action.payload);
     },
   },
 });

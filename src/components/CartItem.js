@@ -1,6 +1,13 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { removeItemFromCart } from '../store/features/cartSlice';
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const handleRemoveFromCart = (cartItem) => {
+    dispatch(removeItemFromCart(cartItem));
+  };
+
   return (
     <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
       <div className="flex w-2/5">
@@ -12,6 +19,7 @@ const CartItem = ({ item }) => {
           <Link
             href="#"
             className="font-semibold hover:text-red-500 text-gray-500 text-xs"
+            onClick={() => handleRemoveFromCart(item)}
           >
             Remove
           </Link>
