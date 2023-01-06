@@ -9,6 +9,7 @@ const Button = ({
   warning,
   outline,
   rounded,
+  dark,
   to,
   ...rest
 }) => {
@@ -22,6 +23,7 @@ const Button = ({
       'border-red-500 bg-red-500 text-white': danger,
       'rounded-full': rounded,
       'bg-white': outline,
+      'bg-zinc-500': dark,
       'text-blue-500': outline && primary,
       'text-green-500': outline && success,
       'text-yellow-400': outline && warning,

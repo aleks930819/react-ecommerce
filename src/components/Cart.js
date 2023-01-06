@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTotals } from '../store/features/cartSlice';
+import { getTotals } from '../store/featuers/cartSlice';
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const theme = useSelector((state) => state.theme);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,26 +17,38 @@ const Cart = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-10">
-        <div className="flex shadow-md my-10">
-          <div className="w-3/4 bg-white px-10 py-10">
-            <div className="flex justify-between border-b pb-8">
+      <div
+        className={`${
+          theme === 'dark' ? 'bg-zinc-600 ' : null
+        } "container mx-auto mt-10 "`}
+      >
+        <div className="flex   shadow-md my-10">
+          <div
+            className={`${
+              theme === 'dark' ? 'bg-zinc-600 ' : null
+            }  " w-3/4 bg-white px-10    py-10"`}
+          >
+            <div className="flex justify-between border-b  pb-8">
               <h1 className="font-semibold text-2xl">Shopping Cart</h1>
               <h2 className="font-semibold text-2xl">
                 {cart.cartTotalQuantity} Items
               </h2>
             </div>
-            <div className="flex mt-10 mb-5">
-              <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">
+            <div
+              className={`${
+                theme === 'dark' ? 'text-white' : 'text-gray-600'
+              } " flex mt-10 mb-5 text-white "`}
+            >
+              <h3 className="font-semibold  text-xs uppercase w-2/5   ">
                 Product Details
               </h3>
-              <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+              <h3 className="font-semibold text-center  text-xs uppercase w-1/5 text-center">
                 Quantity
               </h3>
-              <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+              <h3 className="font-semibold text-center  text-xs uppercase w-1/5 text-center">
                 Price
               </h3>
-              <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+              <h3 className="font-semibold text-center  text-xs uppercase w-1/5 text-center">
                 Total
               </h3>
             </div>

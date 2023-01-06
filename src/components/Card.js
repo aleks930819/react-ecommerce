@@ -1,16 +1,19 @@
 import { FaShoppingCart } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../store/features/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../store/featuers/cartSlice';
 
 import Button from './Button';
 
 const Card = ({ product }) => {
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
 
   return (
     <div
       key={product.id}
-      className="w-80 mb-8  shadow-lg shadow-black-500/50 rounded-md overflow-hidden "
+      className={`${
+        theme === 'dark' ? 'bg-zinc-600' : null
+      } "w-80 mb-8    shadow-lg shadow-black-500/50 rounded-md overflow-hidden "`}
     >
       <div className="relative h-56 hover:scale-110 transition-all cursor-pointer">
         <img src={product.img} alt={product.name} className="h-full w-full" />

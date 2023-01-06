@@ -1,14 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   removeItemFromCart,
   decreaseItemQuantityCart,
   increaseItemQuantityCart,
-} from '../store/features/cartSlice';
+} from '../store/featuers/cartSlice';
 
 const CartItem = ({ item }) => {
-  console.log(item);
   const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme);
 
   const handleRemoveFromCart = (cartItem) => {
     dispatch(removeItemFromCart(cartItem));
@@ -23,9 +23,13 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+    <div
+      className={`${
+        theme === 'dark' ? 'hover:bg-zinc-600 ' : 'hover:bg-gray-100'
+      }" flex  items-center hover:bg-gray-100 -mx-8 px-6 py-5  "`}
+    >
       <div className="flex w-2/5">
-        <div className="w-20">
+        <div className="w-20 ">
           <img className="h-24" src={item.img} alt={item.name} />
         </div>
         <div className="flex flex-col justify-between ml-4 flex-grow">
@@ -39,9 +43,13 @@ const CartItem = ({ item }) => {
           </Link>
         </div>
       </div>
-      <div className="flex justify-center w-1/5">
+      <div
+        className={`${
+          theme === 'dark' ? 'text-white' : 'text-gray-600'
+        } " flex justify-center w-1/5 "}`}
+      >
         <svg
-          className="fill-current text-gray-600 w-3 cursor-pointer"
+          className="fill-current  w-3 cursor-pointer"
           viewBox="0 0 448 512"
           onClick={() => handleDecraseCart(item)}
         >
@@ -50,7 +58,7 @@ const CartItem = ({ item }) => {
         <p className="mx-2 border text-center w-8">{item.itemQuantity}</p>
 
         <svg
-          className="fill-current text-gray-600 w-3 cursor-pointer"
+          className="fill-current  w-3 cursor-pointer"
           viewBox="0 0 448 512"
           onClick={() => handleIncreaseCart(item)}
         >
@@ -58,7 +66,7 @@ const CartItem = ({ item }) => {
         </svg>
       </div>
       <span className="text-center w-1/5 font-semibold text-sm">
-        ${(item.price).toFixed(2)}
+        ${item.price.toFixed(2)}
       </span>
       <span className="text-center w-1/5 font-semibold text-sm">
         ${(item.price * item.itemQuantity).toFixed(2)}
