@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
-### `npm start:server`
+### `npm run start:server`
 To start json server on port:3006
 
 ### `npm start`
