@@ -1,1 +1,1 @@
-export const JSON_API = 'http://localhost:3006';
+export const JSON_API = 'https://react-ecommerce-cart.herokuapp.com/';
